@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>L3 soir</title>
+</head>
+<body>
+
+    {% include 'Appl/navbar.html' %}
+
+    <h2>Etudiant : {{e.nom}} {{e.postnom}} {{e.pren}}</h2>
+
+    <div class="container">
+
+        <!-- DETAILS PAIEMENT FC -->
+        <h3 class="text-success">Détails Paiement en Franc Congolais (FC)</h3>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Montant</th>
+                    <th>Motif</th>
+                    <th>Date paiement</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pa %}
+                    {% if p.unitMon == "Fc" %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ p.mont }} {{ p.unitMon }}</td>
+                        <td>{{ p.motif }}</td>
+                        <td>{{ p.datPaie }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <!-- DETAILS PAIEMENT DOLLAR -->
+        <h3 class="text-warning">Détails Paiement en Dollar ($)</h3>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Montant</th>
+                    <th>Motif</th>
+                    <th>Date paiement</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pa %}
+                    {% if p.unitMon == "$" %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ p.mont }} {{ p.unitMon }}</td>
+                        <td>{{ p.motif }}</td>
+                        <td>{{ p.datPaie }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

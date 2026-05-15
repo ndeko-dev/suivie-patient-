@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>L3 soir</title>
+    </head>
+    <body>
+        {%include 'Appl/navbar.html'%}
+        <h1 class="text-center">Page inscription</h1>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form {%if request.session.proc == "insc" %} action="/Appl/enrE" {%else%} action="/Appl/modE/{{e.id}}" {%endif%} method="POST">
+                            {% csrf_token %}
+                            <label>Nom</label>
+                            <input type="text" value="{{e.nom}}" name="txtno" class="form-control" placeholder="saisir le nom" required/>
+                            <label>Post-nom</label>
+                            <input type="text" value="{{e.postnom}}" name="txtpost" class="form-control" placeholder="saisir le post-nom" required/>
+                            <label>Prénom</label>
+                            <input type="text" value="{{e.pren}}" name="txtpren" class="form-control" placeholder="saisir le prénom" required/>
+                            <label>Genre</label>
+                            <select name="txtSe" class="form-control">
+                                <option value="{{e.sex}}">Masculin</option>
+                                <option value="{{e.sex}}">Féminin</option>
+                            </select>
+                            <label>Lieu de naissance</label>
+                            <input type="text" value="{{e.lieuN}}" name="txtlie" class="form-control" placeholder="saisir le lieu naissance" required/>
+                            <label>Date de naissance</label>
+                            <input type="date" value="{{e.datNais|date:'Y-m-d'}}" name="txtdat" class="form-control"  required/>
+                            <div class="text-center my-2">
+                                {%if request.session.proc == "insc" %}
+                                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                                {%else%}
+                                <input type="submit" value="Modifier" class="btn btn-success"/>
+                                {%endif%}
+                                <input type="reset" value="Annuler" class="btn btn-danger"/>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

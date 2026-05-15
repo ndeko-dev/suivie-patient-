@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>L3 soir</title>
+    </head>
+    <body>
+        {%include 'Appl/navbar.html'%}
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Post-nom</th>
+                    <th>Prénom</th>
+                    <th>Somme</th>
+                    <th>Historique</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etu in e%}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{etu.Et__nom}}</td>
+                    <td>{{etu.Et__postnom}}</td>
+                    <td>{{etu.Et__pren}}</td>
+                    <td>{{etu.somme}} {{etu.unitMon}}</td>
+                    <td>
+                        <a href="/Appl/det/{{etu.Et_id}}" class="btn btn-secondary">Détails</a>
+                    </td>
+                    
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </body>
+</html>

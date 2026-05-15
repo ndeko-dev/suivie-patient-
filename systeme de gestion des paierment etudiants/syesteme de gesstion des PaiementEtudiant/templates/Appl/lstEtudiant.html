@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>L3 soir</title>
+    </head>
+    <body>
+        {%include 'Appl/navbar.html'%}
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Post-nom</th>
+                    <th>Prénom</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etu in e %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{etu.nom}}</td>
+                    <td>{{etu.postnom}}</td>
+                    <td>{{etu.pren}}</td>
+                    <td>
+                        <a href="/Appl/chargP/{{etu.id}}" class="btn btn-secondary">Payez</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </body>
+</html>

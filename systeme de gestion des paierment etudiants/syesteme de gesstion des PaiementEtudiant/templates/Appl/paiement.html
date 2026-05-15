@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>L3 soir</title>
+</head>
+<body>
+
+    {% include 'Appl/navbar.html' %}
+
+    <h1 class="text-center">Page Paiement</h1>
+
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <form action="/enrP/{{e.id}}" method="POST">
+                        {% csrf_token %}
+
+                        <!-- ETUDIANT -->
+                        <label>Etudiant</label>
+                        <input
+                            type="text"
+                            value="{{e.nom}} {{e.postnom}} {{e.pren}}"
+                            readonly="true"
+                            name="txtEt"
+                            class="form-control"
+                            placeholder="Nom de l'étudiant"
+                            required
+                        />
+
+                        <!-- MONTANT -->
+                        <label>Montant</label>
+                        <input
+                            type="number"
+                            name="txtmont"
+                            class="form-control"
+                            placeholder="Saisir le montant"
+                            required
+                        />
+
+                        <!-- UNITE MONETAIRE -->
+                        <label>Unité monétaire</label>
+                        <select name="txtUnit" class="form-control" required>
+                            <option value="">-- Choisir la devise --</option>
+                            <option value="$">$ (Dollar)</option>
+                            <option value="Fc">Fc (Franc Congolais)</option>
+                        </select>
+
+                        <!-- MOTIF -->
+                        <label>Motif</label>
+                        <input
+                            type="text"
+                            name="txtmot"
+                            class="form-control"
+                            placeholder="Saisir le motif"
+                            required
+                        />
+
+                        <!-- DATE -->
+                        <label>Date paiement</label>
+                        <input
+                            type="date"
+                            name="txtdat"
+                            class="form-control"
+                            required
+                        />
+
+                        <br>
+
+                        <!-- BOUTONS -->
+                        <div class="text-center my-2">
+                            <input
+                                type="submit"
+                                value="Enregistrer"
+                                class="btn btn-primary"
+                            />
+
+                            <input
+                                type="reset"
+                                value="Annuler"
+                                class="btn btn-danger"
+                            />
+                        </div>
+
+                    </form>
+
+                    <br>
+
+                
+                    <div class="text-center">
+                        <a href="/details_fc/{{e.id}}" class="btn btn-success">
+                            Détails Paiement FC
+                        </a>
+
+                        <a href="/details_dollar/{{e.id}}" class="btn btn-warning">
+                            Détails Paiement Dollar
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
